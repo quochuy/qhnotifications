@@ -14,6 +14,7 @@
     padding: 2px 2px 2px 2px;
     color: #FFFFFF;
     font-weight: bold;
+    height: 15px;
 }
 
 .notification_text {
@@ -22,4 +23,24 @@
 .notification_collapse_button, .notification_close_button {
     float: right;
     cursor: pointer;
+}
+
+#notification-container-expand {
+    position: fixed;
+    width: 100%;
+    text-align: center;
+}
+
+#notification-container-expand-button {
+    background-color: #FF8000;
+    border-radius: 0 0 5px 5px;
+    cursor: pointer;
+    height: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30px;
+}
+
+#expand-action {
+    display: none;
 }
