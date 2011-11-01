@@ -77,23 +77,30 @@ function QHNotifications( class_parms ) {
             if( $( '#'+ notification_item.notification_id ).length == 0 ) {
                 $( '#notification-container' ).prepend( '<div class="notification-item" id="'+ notification_item.notification_id +'">' +
                                                         '   <span class="notification_text">'+ notification_item.text +'</span>' +
+                                                        '   <div class="notification_close_button" id="notification-close-'+ notification_item.notification_id +'"><span>[X]</span></div>' +
                                                         '</div>'
                 );
 
                 // When a notification is not 'sticky' display a removal button
                 if( typeof notification_item.type == 'undefined' || notification_item.type != 'sticky' ) {
-                    $( '#'+ notification_item.notification_id ).append( '<div class="notification_close_button"><span>[X]</span></div>' );
-                    $( '#'+ notification_item.notification_id ).bind( 'click', {notification_id: notification_item.notification_id}, this.removeNotification );
+                    $( '#notification-close-'+ notification_item.notification_id ).bind( 'click', {notification_id: notification_item.notification_id}, this.removeNotification );
+                } else {
+                    $( '#notification-close-'+ notification_item.notification_id +' span' ).css( 'display', 'none' );
                 }
 
                 // Updates the page's main content top margin value
-                page_offset = page_offset + parseInt( $( '#'+ notification_item.notification_id ).outerHeight() );
+                page_offset = parseInt( $( '#page' ).css( 'margin-top' ) ) + parseInt( $( '#'+ notification_item.notification_id ).outerHeight() );
+
+                QHNotificationsFunctions.setExpandAction( 'Expand' );
 
             // Else update it
             } else {
                 $( '#'+ notification_item.notification_id +' .notification_text' ).html( notification_item.text );
-                page_offset = page_offset + parseInt( $( '.notification-item:first' ).outerHeight() );
+                page_offset = parseInt( $( '#page' ).css( 'margin-top' ) );
             }
+
+            // Delete the notification item from memory
+            this.notification_array.splice( i, 1 );
 
             if( QHNotificationsFunctions.numberOfNotifications() > 2 ) {
                 // If the current expand action is 'Expand' then set the notification container height two the height of two items  

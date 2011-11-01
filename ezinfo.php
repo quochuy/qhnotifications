@@ -1,6 +1,6 @@
 <?php
 /**
- * QH AutoSave - content/edit form autosave extension for eZ Publish 
+ * QH Notifications
  * Written by NGUYEN DINH Quoc-Huy
  * Copyright (C) 2011. NGUYEN DINH Quoc-Huy. All rights reserved.
  * http://www.quoc-huy.com
@@ -25,7 +25,7 @@ class QHNotificationsInfo
     {
         return array(
             'Name' => "QH Notifications for eZ Publish",
-            'Version' => "1.0",
+            'Version' => "1.0b2",
             'Author' => "<a href='http://www.quoc-huy.com/'>Quoc-Huy</a>",
             'Copyright' => "Copyright (C) 2011 Quoc-Huy NGUYEN DINH",
             'License' => "GNU General Public License v2.0"
